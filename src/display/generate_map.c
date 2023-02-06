@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 11:30:28 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/06 16:03:30 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/06 18:29:35 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ void	free_pattern(t_textures *pattern, t_windo *param, t_map *map_info)
 		free_tab(map_info->map);
 }
 
-void	*my_mlx_xpm_file_to_image(void *mlx_ptr, char *filename, int *x, int *y,
-		t_data *all)
+void	*my_mlx_xpm_file_to_image(char *filename, int *x, int *y, t_data *all)
 {
 	void	*tmp;
 
-	tmp = mlx_xpm_file_to_image(mlx_ptr, filename, x, y);
+	tmp = mlx_xpm_file_to_image(all->wind.mlx_ptr, filename, x, y);
 	if (!tmp)
 		exit_free("Something's wrong with the sprites", all->map_info.map);
 	return (tmp);
@@ -50,22 +49,22 @@ void	file_to_img(t_data *all)
 	int	x;
 	int	y;
 
-	all->pattern.player_front1 = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"./sprites/player_front1.xpm", &x, &y, all);
-	all->pattern.player_back1 = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"sprites/player_back1.xpm", &x, &y, all);
-	all->pattern.player_left1 = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"sprites/player_left1.xpm", &x, &y, all);
-	all->pattern.player_right1 = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"sprites/player_right1.xpm", &x, &y, all);
-	all->pattern.collectibles = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"sprites/collectibles.xpm", &x, &y, all);
-	all->pattern.exit = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"sprites/exit.xpm", &x, &y, all);
-	all->pattern.floor = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"sprites/floor.xpm", &x, &y, all);
-	all->pattern.walls = my_mlx_xpm_file_to_image(all->wind.mlx_ptr,
-			"sprites/walls.xpm", &x, &y, all);
+	all->pattern.player_front1 = my_mlx_xpm_file_to_image("./sprites/player_front1.xpm",
+			&x, &y, all);
+	all->pattern.player_back1 = my_mlx_xpm_file_to_image("sprites/player_back1.xpm",
+			&x, &y, all);
+	all->pattern.player_left1 = my_mlx_xpm_file_to_image("sprites/player_left1.xpm",
+			&x, &y, all);
+	all->pattern.player_right1 = my_mlx_xpm_file_to_image("sprites/player_right1.xpm",
+			&x, &y, all);
+	all->pattern.collectibles = my_mlx_xpm_file_to_image("sprites/collectibles.xpm",
+			&x, &y, all);
+	all->pattern.exit = my_mlx_xpm_file_to_image("sprites/exit.xpm", &x, &y,
+			all);
+	all->pattern.floor = my_mlx_xpm_file_to_image("sprites/floor.xpm", &x, &y,
+			all);
+	all->pattern.walls = my_mlx_xpm_file_to_image("sprites/walls.xpm", &x, &y,
+			all);
 	if (!all->pattern.player_back1 || !all->pattern.player_front1
 		|| !all->pattern.player_left1 || !all->pattern.player_right1
 		|| !all->pattern.collectibles || !all->pattern.exit
@@ -73,54 +72,52 @@ void	file_to_img(t_data *all)
 		close_game(all);
 }
 
-void	ft_print(char c, int x, int y, t_windo *param, t_textures *idk)
+void	ft_print(char c, t_map *map, t_windo *param, t_textures *idk)
 {
 	if (c == 'P')
 		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr,
-			idk->player_front1, x, y);
+			idk->player_front1, map->x1, map->y1);
 	if (c == 'E')
-		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->exit, x,
-			y);
+		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->exit, map->x1,
+			map->y1);
 	if (c == 'C')
 		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr,
-			idk->collectibles, x, y);
+			idk->collectibles, map->x1, map->y1);
 	if (c == '1')
-		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls, x,
-			y);
+		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls, map->x1,
+			map->y1);
 	if (c == '2')
-		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls2, x,
-			y);
+		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls2, map->x1,
+			map->y);
 	if (c == '3')
-		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls3, x,
-			y);
+		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls3, map->x1,
+			map->y1);
 	if (c == '4')
-		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls4, x,
-			y);
+		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->walls4, map->x1,
+			map->y1);
 	if (c == '0')
-		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->floor, x,
-			y);
+		mlx_put_image_to_window(param->mlx_ptr, param->wind_ptr, idk->floor, map->x1,
+			map->y1);
 }
 
 int	gen_map(t_map *map, t_windo *param, t_textures *idk)
 {
 	int	i;
 	int	j;
-	int	x;
-	int	y;
 
 	j = -1;
-	x = 0;
-	y = 0;
+	map->x1 = 0;
+	map->y1 = 0;
 	while (map->map[++j])
 	{
 		i = -1;
 		while (map->map[j][++i])
 		{
-			ft_print(map->map[j][i], x, y, param, idk);
-			x += 64;
+			ft_print(map->map[j][i], map, param, idk);
+			map->x1 += 64;
 		}
-		x = 0;
-		y += 64;
+		map->x1 = 0;
+		map->y1 += 64;
 	}
 	return (0);
 }

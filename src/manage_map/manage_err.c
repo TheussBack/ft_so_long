@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:33:35 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/06 18:06:48 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/06 19:00:28 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ int	check_walls(char **map)
 {
 	int	i;
 	int	j;
-	int	k;
 
 	i = -1;
 	j = 0;
-	k = 0;
 	while (map[0][++i] != '\0' && map[0][i] != '\n')
 	{
 		if (map[0][i] != '1')
@@ -56,9 +54,22 @@ int	check_walls(char **map)
 	{
 		if (map[i][0] != '1')
 			return (1);
-		k++;
 	}
+	return (0);
+}
+
+int	check_walls2(char **map)
+{
+	int	k;
+	int	j;
+	int	i;
+
+	k = 0;
+	j = ft_strlen(map[0]);
 	i = -1;
+
+	while (map[k])
+		k++;
 	j--;
 	while (map[++i])
 	{
@@ -111,6 +122,9 @@ int	manage_err(char **map)
 	i += rectangle_map(map);
 	i += check_items(map, tab[0], tab[1], tab[2]);
 	i += check_walls(map);
+	printf("%d\n", i);
+	i += check_walls2(map);
+	printf("%d\n", i);
 	if (i != 0)
 	{
 		write(1, "Error with the map\n", 19);
