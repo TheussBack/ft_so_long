@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 21:14:22 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/04 16:55:40 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/08 18:08:22 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ int	check_flood_fill(char **copy)
 		x = -1;
 		while (copy[y][++x])
 		{
-			if (copy[y][x] == 'C')
+			if (copy[y][x] != '0' && copy[y][x] != '1'
+				&& copy[y][x] != '\n')
 				return (1);
 		}
 	}
@@ -62,7 +63,7 @@ int	check_mappath(t_map *map)
 	flood_fill(map_cpy);
 	result = check_flood_fill(map_cpy->map);
 	if (result)
-		exit_free("invalid path sorry", map_cpy->map);
+		exit_free("Invalid path sorry", map_cpy->map);
 	free_tab(map_cpy->map);
 	return (result);
 }

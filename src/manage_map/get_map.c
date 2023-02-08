@@ -114,8 +114,7 @@ int	get_map(char *av, t_map *data)
 		if (get_map(av[1], &map))
 			return (1); // error !
 		map.height = 10; // calcule
-		while (map.map[++i] != NULL)
-			printf("%s", map.map[i]);
+		c
 		free (map.map);
 	}
 	return (0);

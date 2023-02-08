@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:33:35 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/06 19:00:28 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/08 16:37:06 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,53 +36,39 @@ int	rectangle_map(char **map)
 	return (0);
 }
 
+int	ft_len_tab(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
 int	check_walls(char **map)
 {
 	int	i;
 	int	j;
 
-	i = -1;
+	i = 0;
+	j = ft_len_tab(map);
+	while (map[0][i] != '\0' && map[j - 1][i] != '\0' && map[0][i] != '\n'
+		&& map[j - 1][i] != '\n')
+	{
+		if (map[0][i] != '1' || map[j - 1][i] != '1')
+			return (6);
+		++i;
+	}
 	j = 0;
-	while (map[0][++i] != '\0' && map[0][i] != '\n')
+	while (map[j] != NULL)
 	{
-		if (map[0][i] != '1')
+		if (map[j][0] != '1' || map[j][i - 1] != '1')
 			return (1);
-		j++;
+		++j;
 	}
-	i = -1;
-	while (map[++i])
-	{
-		if (map[i][0] != '1')
-			return (1);
-	}
-	return (0);
-}
-
-int	check_walls2(char **map)
-{
-	int	k;
-	int	j;
-	int	i;
-
-	k = 0;
-	j = ft_strlen(map[0]);
-	i = -1;
-
-	while (map[k])
-		k++;
-	j--;
-	while (map[++i])
-	{
-		if (map[i][j] != '1')
-			return (1);
-	}
-	i = -1;
-	k--;
-	while (map[k][i++] && map[k][i] != '\n')
-	{
-		if (map[k][i] != '1')
-			return (1);
-	}
+	if (i == j)
+		return (1);
 	return (0);
 }
 
@@ -122,9 +108,6 @@ int	manage_err(char **map)
 	i += rectangle_map(map);
 	i += check_items(map, tab[0], tab[1], tab[2]);
 	i += check_walls(map);
-	printf("%d\n", i);
-	i += check_walls2(map);
-	printf("%d\n", i);
 	if (i != 0)
 	{
 		write(1, "Error with the map\n", 19);

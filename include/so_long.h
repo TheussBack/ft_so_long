@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 18:10:45 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/06 18:58:20 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/08 12:17:16 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,6 @@ void	is_ber(char *filename);
 int	red_cross(void *sl);
 void is_too_big(t_data *all);
 void	*my_mlx_xpm_file_to_image(char *filename, int *x, int *y, t_data *all);
-int	check_walls2(char **map);
+int	ft_len_tab(char **map);
 
 #endif

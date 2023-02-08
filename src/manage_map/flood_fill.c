@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:08:29 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/04 17:46:50 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/08 18:07:27 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,9 @@ int	flood_fill(t_map *map)
 		while (map->map[y][x])
 		{
 			if (map->map[y][x] != '1' && map->map[y][x] != '0'
-				&& map->map[y][x] != '\n')
-				return (1);
+				&& map->map[y][x] != '\n' && map->map[y][x] != 'E' &&
+				map->map[y][x] != 'C' && map->map[y][x] != 'P')
+				exit_free("Wrong character in the map", map->map);
 			x++;
 		}
 		y++;
