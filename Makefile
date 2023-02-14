@@ -6,7 +6,7 @@
 #    By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 15:36:51 by hrobin            #+#    #+#              #
-#    Updated: 2023/02/14 10:26:39 by hrobin           ###   ########.fr        #
+#    Updated: 2023/02/14 13:14:39 by hrobin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ MLX_LIBS    := -L$(PATH_MLX) -lmlx -lX11 -lXext
 all: $(NAME)
 
 $(NAME): $(OBJS)
+	make -C minilibx-linux
 	make -C Libft
 	$(CC) $(OBJS) $(LIBRARIES) $(MLX_LIBS) -o $(NAME)
 	$(info CREATED $@)
