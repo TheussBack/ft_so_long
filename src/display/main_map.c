@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 10:38:41 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/06 17:42:17 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/14 10:19:33 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void	is_ber(char *filename)
 	i = 0;
 	len_name = ft_strlen(filename);
 	if (len_name < 4)
-		exit_fail("File is not a .ber");
+		exit_fail("Error\nFile is not a .ber");
 	while (filename[i] && i < (len_name - 4))
 		i++;
 	if (ft_strncmp((filename + i), ".ber", 4))
-		exit_fail("File is not a .ber");
+		exit_fail("Error\nFile is not a .ber");
 }
 
 int	show_map(t_data *data, char **argv)

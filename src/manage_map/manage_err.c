@@ -6,7 +6,7 @@
 /*   By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 18:33:35 by hrobin            #+#    #+#             */
-/*   Updated: 2023/02/08 16:37:06 by hrobin           ###   ########.fr       */
+/*   Updated: 2023/02/14 10:37:38 by hrobin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	manage_err(char **map)
 	i += check_walls(map);
 	if (i != 0)
 	{
-		write(1, "Error with the map\n", 19);
+		write(1, "Error\nIncorrect map", 19);
 		return (1);
 	}
 	else
