@@ -6,7 +6,7 @@
 #    By: hrobin <hrobin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 15:36:51 by hrobin            #+#    #+#              #
-#    Updated: 2023/02/14 13:14:39 by hrobin           ###   ########.fr        #
+#    Updated: 2023/02/15 13:13:49 by hrobin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
 
-CC            := gcc -g3
+CC            := cc -g3
 CFLAGS        := -Wall -Wextra -Werror
 CPPFLAGS    := -MMD -MP -I include
 RM            := rm -f

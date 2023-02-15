@@ -95,7 +95,7 @@ int	get_map(char *av, t_map *data)
 		map[i] = get_next_line(fd);
 		while (map[i] && i < nb_l)
 			map[++i] = get_next_line(fd);
-		map[i] = '\0';
+		map[i] = NULL;
 	}
 	close(fd);
 	data->map = map;
