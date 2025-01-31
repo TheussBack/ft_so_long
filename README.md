@@ -84,4 +84,8 @@ While not required, there are additional features that can be added for extra po
 ---
 
 ![Game Screenshot](screenshots/BushesSoLong.jpg)
+![Game Screenshot](screenshots/ChampisSoLong.jpg)
+![Game Screenshot](screenshots/ChatSoLong.jpg)
+![Game Screenshot](screenshots/GrenouilleSoLOng.jpg)
+![Game Screenshot](screenshots/SolSoLong.jpg)
 
