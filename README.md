@@ -83,13 +83,5 @@ While not required, there are additional features that can be added for extra po
 
 ---
 
-## License
+![Game Screenshot](screenshots/BushesSoLong.jpg)
 
-This project is developed for educational purposes. Feel free to fork or modify it for your own learning or projects.
-
----
-
-## Acknowledgments
-
-- **MiniLibX**: The graphical library used for creating the window and handling rendering.
-- **Resources**: Texture, sprite, and tile resources can be found on platforms like itch.io. Make sure to respect the licenses of the assets you use.
